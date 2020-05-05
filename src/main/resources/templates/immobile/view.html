@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<title>Proprietário</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link type="text/css" rel="stylesheet" href="../style/style.css" />
+</head>
+<body>
+<header>
+	  <nav>
+	    	<div class="nav-wrapper green" id="menu">
+	    	<a href="/" class="brand-logo center">Proprietário</a>
+	      	<ul id="nav-mobile" class="left hide-on-med-and-down">
+	        <li><a href="/" class="waves-effect waves-light btn "><i
+			class="material-icons left">arrow_back</i>Voltar</a></li>
+	      </ul>
+    </div>
+  </nav>
+	</header>
+	<div class="container create" th:each="proprietor:${proprietor}">
+	<form class="container">
+		<div class="row">
+			<div class="input-field col s6">
+				<input disabled  type="text" name="name" th:value="${proprietor.name}" />
+				<label for="name">Nome do Proprietário</label>
+			</div>
+			<div class="input-field col s6">
+				<input disabled  type="text" name="address" th:value="${proprietor.address}" />
+				<label for="address">Endereço</label>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div class="container formProduto">
+		<form method="post">
+			<div class="row">
+				<div class="input-field col s12">
+					<input type="text" name="address"  class="validate"/>
+					<label for="address">Endereço</label>
+				</div>
+			</div>
+			<div class="row">	
+				<div class="input-field col s4">
+					<input type="number" name="landArea" />
+					<label for="landArea">Área do Terreno</label>
+				</div>
+				<div class="input-field col s4">
+					<input type="number" name="buildingArea" />
+					<label for="buildingArea">Área Construida</label>
+				</div>
+				<div class="input-field col s4">
+					<input type="number" name="aliquot" />
+					<label for="aliquot">Aliquota</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s4">
+					<input type="number" name="landVenalValue" />
+					<label for="landVenalValue">Valor Venal Terreno</label>
+				</div>
+				<div class="input-field col s4">
+					<input type="number" name="venalConstructionlValue" />
+					<label for="venalConstructionlValue">Valor Venal Construção</label>
+				</div>
+				<div class="input-field col s4">
+					<input type="number" name="appliedRate" />
+					<label for="appliedRate">Aliquota Aplicada</label>
+				</div>
+				<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
+			</div>
+		</form>
+	</div>
+	
+	<table class="container">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Endereço</th>
+				<th>Arena do Terreno</th>
+				<th>Arena Construida</th>
+				<th>Área Total</th>
+				<th>Aliquota</th>
+				<th>Valor Venal Terreno</th>
+				<th>Valor Venal Construção</th>
+				<th>Valor Venal Total</th>
+				<th>Aliquota Aplicada</th>
+				<th>Valor do Imposto</th>
+			</tr>
+		</thead>
+			<tbody>
+				<tr th:each="immobile:${immobile}">
+					<td><a th:href="@{/deleteImmobile/{id}(id=${immobile.id})}" class="btn-floating red"><i
+			class="material-icons left">delete</i></a></td>
+					<td><span th:text="${immobile.address}"></td>
+					<td><span th:text="${immobile.landArea}"></span>
+					<td><span th:text="${immobile.buildingArea}"></td>
+					<td><span th:text="${immobile.totalArea}"></td>
+					<td><span th:text="${immobile.aliquot}"></td>
+					<td><span th:text="${immobile.landVenalValue}"></td>
+					<td><span th:text="${immobile.venalConstructionlValue}"></td>
+					<td><span th:text="${immobile.totalVenalValue}"></td>
+					<td><span th:text="${immobile.appliedRate}"></td>
+					<td><span th:text="${immobile.taxAmount}"></td>
+				</tr>
+			</tbody>
+	</table>
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+</body>
+</html>	
