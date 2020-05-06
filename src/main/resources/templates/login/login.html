@@ -19,11 +19,7 @@
 	  <nav>
 	    	<div class="nav-wrapper green" id="menu">
 	    	<a href="/" class="brand-logo center">Login</a>
-	      	<ul id="nav-mobile" class="left hide-on-med-and-down">
-	        <li><a href="/" class="waves-effect waves-light btn "><i
-			class="material-icons left">arrow_back</i>Voltar</a></li>
-			</ul>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
+	      	<ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li><a href="/createUser" class="waves-effect waves-light btn "><i
 			class="material-icons right">create</i>Criar Conta</a></li>		
 	      </ul>
@@ -35,6 +31,7 @@
 	<fieldset>
 		<div class="row">
 			<div th:if="${param.error}" class="alert alert-danger">
+				<i class="material-icons left">add_alert</i>
 				Usuário ou senha incorreto
 			</div>
 			<div th:if="${param.logout}" class="alert alert-success">
